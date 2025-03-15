@@ -15,7 +15,8 @@ void ft_free(char **arr)
 			free(arr[j][i]);
 			i++;
 		}
-		j++;
+		free(are[j]);
+  j++;
 	}
 }
 
