@@ -1,31 +1,49 @@
 #include "pipex.h"
 
-void child_pro(int *fd, char **av, char ep)
+void exec(char *cmd, char **env)
+{
+    char **s_cmd;
+    char *path;
+
+    s_cmd = ft_split(cmd, ' ');   
+    path = paths(s_cmd[0], env);
+    if (execve(path, s_cmd, env) == -1)  
+    {
+        ft_putstr_fd("pipex: command not found: ", 2);
+        ft_putendl_fd(s_cmd[0], 2);
+        ft_free(s_cmd);
+        exit(0);
+    }
+}
+
+
+void child_pro(int *fd, char **av, char **ep)
 {
 	int fds;
 
-	fds = O_file(av[1], 0);
+	fds = open_file(av[1], 0);
 	close(fd[0]);
 	dup2(fds, 0);
 	dup2(fd[1], 1);
-
+	exec(av[2], ep);
 }
 
-void parent_pro(int *fd, char **av, char ep)
+void parent_pro(int *fd, char **av, char** ep)
 {
 	int fds;
 
-	fds = O_file(av[4], 1);
+	fds = open_file(av[4], 1);
 	close(fd[1]);
 	dup2(fds, 1);
 	dup2(fd[0], 0);
+	exec(av[3], ep);
 }
 
 int main(int ac, char **av, char **ep)
 {
 	if (ac != 5) 
 	{
-		printf("Kullanım: ./pipex infile cmd1 cmd2 outfile\n");
+		ft_putendl_fd("used: ./pipex infile cmd1 cmd2 outfile",39);
 		return (1);
 	}
 	else
