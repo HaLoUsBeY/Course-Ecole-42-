@@ -17,7 +17,7 @@ void ft_free(char **arr)
 		}
 		free(arr[j]);
                 j++;
-	}
+	}free(arr);
 }
 
 int open_file(char *av, int a)
