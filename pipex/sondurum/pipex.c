@@ -6,7 +6,7 @@
 /*   By: haloztur <haloztur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:16:30 by haloztur          #+#    #+#             */
-/*   Updated: 2025/03/16 18:04:18 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/03/16 22:35:03 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	exec(char *cmd, char **env)
 	char	*path;
 
 	if (!cmd)
-		perror("pipex: command not found");
+		ft_err(cmd);
 	s_cmd = ft_split(cmd, ' ');
 	if (!s_cmd || !s_cmd[0])
 	{
@@ -28,19 +28,13 @@ static void	exec(char *cmd, char **env)
 	}
 	path = paths(s_cmd[0], env);
 	if (!path)
-	{
-		ft_putstr_fd("pipex: command not found: ", 2);
-		ft_putendl_fd(s_cmd[0], 2);
-		ft_free(s_cmd);
-		exit(127);
-	}
+		ft_err(path);
 	execve(path, s_cmd, env);
 	ft_putstr_fd("pipex: command not found: ", 2);
 	ft_putendl_fd(s_cmd[0], 2);
 	ft_free(s_cmd);
 	exit(127);
 }
-
 
 static void	child_pro(int *fd, char **av, char **ep)
 {

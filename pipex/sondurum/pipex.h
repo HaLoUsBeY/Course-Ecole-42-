@@ -6,7 +6,7 @@
 /*   By: haloztur <haloztur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:26:25 by haloztur          #+#    #+#             */
-/*   Updated: 2025/03/16 16:20:07 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/03/16 22:36:09 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 int					open_file(char *av, int a);
 void				*paths(char *cmd, char **env);
 void				ft_free(char **arr);
+void				ft_err(char *str);
 
 #endif

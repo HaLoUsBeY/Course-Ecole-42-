@@ -6,11 +6,21 @@
 /*   By: haloztur <haloztur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:31:28 by haloztur          #+#    #+#             */
-/*   Updated: 2025/03/16 17:34:43 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/03/16 22:30:00 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	ft_err(char *str)
+{
+	if (!str)
+	{
+		ft_putstr_fd("pipex: command not found: ", 2);
+		ft_putendl_fd(str, 2);
+		exit(127);
+	}
+}
 
 void	ft_free(char **tab)
 {
