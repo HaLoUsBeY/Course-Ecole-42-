@@ -33,25 +33,28 @@ int open_file(char *av, int a)
 	return (result);
 }
 
-char *rmpaths(char *cmd, char **env)
+char	*rmpaths(char *name, char **env)
 {
-	char *res;
-	int i = 0;
-	int j = 0;
+	int		i;
+	int		j;
+	char	*sub;
+
+	i = 0;
 	while (env[i])
 	{
+		j = 0;
 		while (env[i][j] && env[i][j] != '=')
 			j++;
-		res = ft_substr(env[i][j], 0, j); 
-		if (ft_strcmp(res, cmd) == 0)
+		sub = ft_substr(env[i], 0, j);
+		if (ft_strncmp(sub, name, j) == 0)
 		{
-			free(res);
-			return (env[i] + 1 + j);
+			free(sub);
+			return (env[i] + j + 1);
 		}
-		free(res);
+		free(sub);
 		i++;
 	}
-	return (res);
+	return (NULL);
 }
 
 
@@ -65,10 +68,10 @@ void *paths(char *cmd, char **env)
 
 	get_path = ft_split((rmpaths("PATH", env)) ,':');
 	s_cmd = ft_split(cmd, ' ');
-	i = 0;
-	while (get_path[i++])
+	i = -1;
+	while (get_path[++i])
 	{
-		part_path = ft_strjoin(get_path[i], '/');
+		part_path = ft_strjoin(get_path[i], "/");
 		file = ft_strjoin(part_path, s_cmd[0]);
 		free(part_path);
 		if (access(file, F_OK | X_OK) == 0)

@@ -7,6 +7,7 @@ void exec(char *cmd, char **env)
 
     s_cmd = ft_split(cmd, ' ');   
     path = paths(s_cmd[0], env);
+    printf("Çalıştırılacak komut: %s\n", path);  
     if (execve(path, s_cmd, env) == -1)  
     {
         ft_putstr_fd("pipex: command not found: ", 2);
@@ -68,7 +69,7 @@ int main(int ac, char **av, char **ep)
 		{
 			child_pro(fd, av, ep);
 		}
-		wait(NULL);
+		waitpid(pid, NULL, 0);
 		parent_pro(fd, av, ep);
 	}
 	return (0);

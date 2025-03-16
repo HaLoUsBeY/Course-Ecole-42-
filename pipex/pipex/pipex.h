@@ -5,12 +5,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-//#include <windows.h>
-//#include <process.h>
 #include <sys/wait.h>
 #include "libft/libft.h"
 
-void open_file(char *av, int a);
+int open_file(char *av, int a);
 void *paths(char *cmd, char **env);
 char *rmpaths(char *cmd, char **env);
 void child_pro(int *fd, char **av, char **ep);
