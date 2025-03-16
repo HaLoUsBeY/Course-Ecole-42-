@@ -1,44 +1,36 @@
 
 #include "pipex.h"
 
-void ft_free(char **arr)
+void	ft_free(char **tab)
 {
-	int j;
-	int i;
+	size_t	i;
 
 	i = 0;
-	j = 0;
-	while (arr[j])
+	while (tab[i])
 	{
-		while (arr[j][i])
-		{
-			free(arr[j][i]);
-			i++;
-		}
-		free(arr[j]);
-                j++;
-	}free(arr);
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }
 
 int open_file(char *av, int a)
 {
 	int result;
 
-	if (!a)
+	if (a == 0)
 	{
 		result = open(av, O_RDONLY, 0777);
-		return (result);
 	}
 	if (a == 1)
 	{
 		result = open(av, O_CREAT | O_APPEND | O_WRONLY | O_TRUNC, 0777);
-		return (result);
 	}
 	if (a == -1)
 	{
-		//exit(0);
-		return (0);
+		exit(0);
 	}
+	return (result);
 }
 
 char *rmpaths(char *cmd, char **env)
@@ -46,16 +38,19 @@ char *rmpaths(char *cmd, char **env)
 	char *res;
 	int i = 0;
 	int j = 0;
-	while (env[i][j] && env[i][j] != '=')
-		j++;
-	res = ft_substr(env[i][j], j, NULL); 
-	if (ft_strncmp(res, env[i][j], j) == 0)
+	while (env[i])
+	{
+		while (env[i][j] && env[i][j] != '=')
+			j++;
+		res = ft_substr(env[i][j], 0, j); 
+		if (ft_strcmp(res, cmd) == 0)
 		{
 			free(res);
-			return (env[i][j] + 1 + j);
+			return (env[i] + 1 + j);
 		}
 		free(res);
-	i++;
+		i++;
+	}
 	return (res);
 }
 
@@ -66,7 +61,7 @@ void *paths(char *cmd, char **env)
 	char *part_path;
 	char **s_cmd;
 	char *file;
-	int i;
+	int			i;
 
 	get_path = ft_split((rmpaths("PATH", env)) ,':');
 	s_cmd = ft_split(cmd, ' ');
@@ -83,5 +78,7 @@ void *paths(char *cmd, char **env)
 		}
 		free(file);
 	}
-
+	ft_free(get_path);
+	ft_free(s_cmd);
+	return (cmd);
 }

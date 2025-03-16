@@ -22,9 +22,9 @@ void child_pro(int *fd, char **av, char **ep)
 	int fds;
 
 	fds = open_file(av[1], 0);
-	close(fd[0]);
 	dup2(fds, 0);
 	dup2(fd[1], 1);
+	close(fd[0]);
 	exec(av[2], ep);
 }
 
@@ -33,9 +33,9 @@ void parent_pro(int *fd, char **av, char** ep)
 	int fds;
 
 	fds = open_file(av[4], 1);
-	close(fd[1]);
 	dup2(fds, 1);
 	dup2(fd[0], 0);
+	close(fd[1]);
 	exec(av[3], ep);
 }
 
@@ -61,7 +61,7 @@ int main(int ac, char **av, char **ep)
 		pid = fork();
 		if (pid == -1)
 		{
-			peror("fork basarisiz");
+			perror("fork basarisiz");
 			return (1);
 		}
 		if (pid == 0)
