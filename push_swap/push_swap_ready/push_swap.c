@@ -6,13 +6,11 @@
 /*   By: haloztur <haloztur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:35:43 by haloztur          #+#    #+#             */
-/*   Updated: 2025/03/26 14:53:27 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/03/26 16:07:23 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
-#include "include/sort.h"
-#include "include/rules.h"
+#include "push_swap.h"
 
 void start_stacks(p_data ***astack, p_data ***bstack)
 {
@@ -52,7 +50,7 @@ p_data **getfullstack(p_data **astack, char **argv)
 
 static void controlp_arg(char **as)
 {
-	if (is_int(as) == -1 || is_duplacte(as) == -1 || ft_is_digit(as) == -1)
+	if (ft_is_int(as) == -1 || ft_is_duplicate(as) == -1 || ft_is_digit(as) == -1)
 		err_finds();
 }
 
@@ -71,7 +69,7 @@ int	main(int ac, char **av)
 	controlp_arg(as);
 	start_stacks(&adata, &bdata);
 	adata = getfullstack(adata, as);
-	if (is_true_sorted(*adata, INCREASING))
+	if (!is_true_sorted(*adata, INCREASING))
 		sort_stack(adata, bdata);
 	ft_free_stacks(adata, bdata);
 	ft_free(as);
