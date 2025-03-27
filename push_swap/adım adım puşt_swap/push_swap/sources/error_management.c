@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atursun <atursun@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: haloztur <haloztur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:53:56 by atursun           #+#    #+#             */
-/*   Updated: 2025/03/23 12:20:45 by atursun          ###   ########.fr       */
+/*   Updated: 2025/03/24 16:48:49 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,22 @@ void	error_handling(void)
 	exit(EXIT_FAILURE);
 }
 
+#include <stdio.h>
 int	is_argv_null(char **str)
 {
 	int	i;
+	int	j;
 
-	i = 0;
+	if (!str[1][0])
+		error_handling();
+	i = 1;
 	while (str[i])
 	{
-		if (!str[i][0] || (str[i][0] == ' ' && !str[i][1]))
-			error_handling();
+		j = 0;
+		while (!str[i][j] || (str[i][j] == ' ') || (str[i][j] <=13 && str[i][j] >= 9))
+			j++;
+		if (!str[i][0] || !str[i][j + 1])
+				error_handling();
 		i++;
 	}
 	return (0);

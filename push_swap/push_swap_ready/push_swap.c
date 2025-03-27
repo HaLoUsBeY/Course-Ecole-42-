@@ -6,7 +6,7 @@
 /*   By: haloztur <haloztur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:35:43 by haloztur          #+#    #+#             */
-/*   Updated: 2025/03/26 16:07:23 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:22:26 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int ac, char **av)
 	if (!av)
 		return (1);
 	argv_check(av);
-	as = totalarg(ac, av);
+	as = totalarg(ac, av, 0);
 	controlp_arg(as);
 	start_stacks(&adata, &bdata);
 	adata = getfullstack(adata, as);

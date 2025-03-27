@@ -6,46 +6,38 @@
 /*   By: haloztur <haloztur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:25:40 by haloztur          #+#    #+#             */
-/*   Updated: 2025/03/26 15:19:19 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:22:33 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-char	**totalarg(int argc, char **argv)
+char	**totalarg(int argc, char **argv, int i)
 {
 	char	*result;
 	char	**args;
-	int		i;
 	int		total_len;
 	int		pos;
 	int		len;
 
-	total_len = 0;
-	i = 1;
 	pos = 0;
-	while (i < argc)
-	{
+	total_len = 0;
+	while (++i < argc)
 		total_len += ft_strlen(argv[i]) + 1;
-		i++;
-	}
 	result = (char *)malloc(total_len * sizeof(char));
 	if (!result)
 		return (NULL);
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (++i < argc)
 	{
 		len = ft_strlen(argv[i]);
 		ft_memcpy(result + pos, argv[i], len);
 		pos += len;
 		if (i < argc - 1)
 			result[pos++] = ' ';
-		i++;
 	}
 	result[pos] = '\0';
-	args = ft_split(result, ' ');
-	free(result);
-	return (args);
+	return (args = ft_split(result, ' '), free(result), args);
 }
 
 p_data	*get_node(int value)

@@ -39,7 +39,7 @@ int ft_is_int(char **av);
 int ft_is_digit(char **tab);
 
 
-char	**totalarg(int argc, char **argv);
+char	**totalarg(int argc, char **argv, int i);
 p_data	*get_node(int value);
 int	is_true_sorted(p_data *astack, s_machine value);
 int	stack_len(p_data *stack);
