@@ -52,7 +52,6 @@ static void	zoom(t_fractal *fractal, int x, int y, int zoom)
 	}
 }
 
-
 static int	mouse_scroll(int button, int x, int y, t_fractal *fractal)
 {
 	if (button == SCROLL_UP)
@@ -62,6 +61,7 @@ static int	mouse_scroll(int button, int x, int y, t_fractal *fractal)
 	runner(fractal);
 	return (0);
 }
+
 void	controllers(t_fractal *fractal)
 {
 	mlx_key_hook(fractal->window, key_button, fractal);

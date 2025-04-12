@@ -69,22 +69,27 @@ static void	julia(t_fractal *fractal)
 		i++;
 	}
 	if (i == ITERATION)
-        color_to_pixel(fractal, 0, fractal->x, fractal->y);
+		color_to_pixel(fractal, 0, fractal->x, fractal->y);
 	else
-        color_to_pixel(fractal, fractal->color * i, fractal->x, fractal->y);
+		color_to_pixel(fractal, fractal->color * i, fractal->x, fractal->y);
 }
 
 void	runner(t_fractal *fractal)
 {
+	int	a;
+	int	b;
+
+	a = ft_strlen("mandelbrot");
+	b = ft_strlen("julia");
 	fractal->x = 0;
 	fractal->y = 0;
 	while (fractal->x < SIZE)
 	{
 		while (fractal->y < SIZE)
 		{
-			if (!ft_strncmp(fractal->name, "mandelbrot", 10))
+			if (!ft_strncmp(fractal->name, "mandelbrot", a))
 				mandel(fractal);
-			else if (!ft_strncmp(fractal->name, "julia", 5))
+			else if (!ft_strncmp(fractal->name, "julia", b))
 				julia(fractal);
 			(fractal->y)++;
 		}

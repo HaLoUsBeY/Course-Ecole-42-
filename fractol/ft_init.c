@@ -23,7 +23,7 @@ static void	ft_error(t_fractal *fractal)
 {
 	mlx_destroy_image(fractal->mlx, fractal->img);
 	mlx_destroy_window(fractal->mlx, fractal->window);
-    mlx_destroy_display(fractal->mlx);
+	mlx_destroy_display(fractal->mlx);
 	free(fractal->mlx);
 	free(fractal);
 	ft_putstr_fd("Error\n", 1);
@@ -37,7 +37,8 @@ void	fractal_init(t_fractal *fractal, char *name)
 	fractal->mlx = mlx_init();
 	if (!ft_strncmp(fractal->name, "julia", 5))
 	{
-		fractal->window = mlx_new_window(fractal->mlx, SIZE, SIZE, fractal->name);
+		fractal->window = mlx_new_window(fractal->mlx, SIZE, SIZE,
+				fractal->name);
 		fractal->shift_x = -1.4;
 		fractal->shift_y = -1.4;
 		fractal->zoom = 350;

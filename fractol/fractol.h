@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: haloztur <haloztur@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/12 15:57:27 by haloztur          #+#    #+#             */
+/*   Updated: 2025/04/12 15:57:27 by haloztur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-
-#include "minilibx-linux/mlx.h"
-#include "library/libft/libft.h"
-#include <stdlib.h>
-#include <unistd.h>
+# include "minilibx-linux/mlx.h"
+# include "library/libft/libft.h"
+# include <stdlib.h>
+# include <unistd.h>
 # include <math.h>
 
 # define ESC 65307
@@ -40,7 +51,7 @@ typedef struct s_fractal
 
 void	controllers(t_fractal *fractal);
 
-int ft_double(char *s);
+int		ft_double(char *s);
 double	ft_datoi(char *s);
 
 void	fractal_init(t_fractal *fractal, char *name);

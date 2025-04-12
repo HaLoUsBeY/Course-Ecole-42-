@@ -12,30 +12,30 @@
 
 #include "fractol.h"
 
-int ft_double(char *s)
+int	ft_double(char *s)
 {
-    int i = 0;
-    int comma = 0;
+	int		i;
+	int		comma;
 
-    while (s[i] == ' ' || s[i] == '\t')
-        i++;
-
-    if (s[i] == '-' || s[i] == '+')
-        i++;
-
-    while (s[i])
-    {
-        if (s[i] == '.')
-        {
-            if (comma)
-                return (0);
-            comma = 1;
-        }
-        else if (s[i] < '0' || s[i] > '9')
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	comma = 0;
+	while (s[i] == ' ' || s[i] == '\t')
+		i++;
+	if (s[i] == '-' || s[i] == '+')
+		i++;
+	while (s[i])
+	{
+		if (s[i] == '.')
+		{
+			if (comma)
+				return (0);
+			comma = 1;
+		}
+		else if (s[i] < '0' || s[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 double	ft_datoi(char *s)
