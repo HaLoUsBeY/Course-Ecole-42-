@@ -22,7 +22,7 @@
 # define ESC 65307
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
-# define ITERATION 42
+# define ITERATION 550
 # define SIZE 800
 
 typedef struct s_fractal
@@ -51,8 +51,8 @@ typedef struct s_fractal
 
 void	controllers(t_fractal *fractal);
 
-int		ft_double(char *s);
-double	ft_datoi(char *s);
+int		idk(char *s);
+double		ft_datoi(char *s);
 
 void	fractal_init(t_fractal *fractal, char *name);
 

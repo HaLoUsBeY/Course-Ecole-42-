@@ -16,7 +16,8 @@ static void	fractal_data(t_fractal *fractal)
 {
 	fractal->x = 0;
 	fractal->y = 0;
-	fractal->color = 0x908f8f;
+	//fractal->color = 0x90808f;
+	fractal->color = 0x0ff000;
 }
 
 static void	ft_error(t_fractal *fractal)
@@ -39,17 +40,17 @@ void	fractal_init(t_fractal *fractal, char *name)
 	{
 		fractal->window = mlx_new_window(fractal->mlx, SIZE, SIZE,
 				fractal->name);
-		fractal->shift_x = -1.4;
-		fractal->shift_y = -1.4;
-		fractal->zoom = 350;
+		fractal->shift_x = -1.5;
+		fractal->shift_y = -1.5;
+		fractal->zoom = SIZE / 3;
 	}
 	else if (!ft_strncmp(fractal->name, "mandel", 6))
 	{
 		fractal->window = mlx_new_window(fractal->mlx, SIZE, SIZE,
 				fractal->name);
 		fractal->shift_x = -2;
-		fractal->shift_y = -1.30;
-		fractal->zoom = 370;
+		fractal->shift_y = -1.5;
+		fractal->zoom = SIZE / 3;
 	}
 	fractal->img = mlx_new_image(fractal->mlx, SIZE, SIZE);
 	if (!fractal->mlx || !fractal->window || !fractal->img)

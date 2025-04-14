@@ -33,7 +33,7 @@ static void	zoom(t_fractal *fractal, int x, int y, int zoom)
 {
 	double	zoom_level;
 
-	zoom_level = 1.4;
+	zoom_level = 1.75;
 	if (zoom == 1)
 	{
 		fractal->shift_x = (x / fractal->zoom + fractal->shift_x) - (x

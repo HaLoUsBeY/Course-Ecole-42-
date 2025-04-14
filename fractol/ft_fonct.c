@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-int	ft_double(char *s)
+static int	ft_double(char *s)
 {
 	int		i;
 	int		comma;
@@ -64,4 +64,12 @@ double	ft_datoi(char *s)
 		n2 = n2 +(*s++ - '0') * pow;
 	}
 	return ((n1 + n2) * sign);
+}
+
+int idk (char *s)
+{
+	if (!*s)
+		return (0);
+	else
+		return (ft_double(s));
 }

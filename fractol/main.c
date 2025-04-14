@@ -18,14 +18,14 @@ static	int	checker(int ac, char **av)
 		return (0);
 	if (ac == 2)
 	{
-		if (ft_strncmp(av[1], "mandelbrot", ft_strlen("mandelbrot")) != 0)
+		if (ft_strncmp(av[1], "mandelbrot", ft_strlen(av[1])) != 0)
 			return (0);
 	}
 	else if (ac == 4)
 	{
-		if (ft_strncmp(av[1], "julia", ft_strlen("julia")) != 0)
+		if (ft_strncmp(av[1], "julia", ft_strlen(av[1])) != 0)
 			return (0);
-		if (!ft_double(av[2]) || !ft_double(av[3]))
+		if (!idk(av[2]) || !idk(av[3]))
 		{
 			ft_putstr_fd("there should be only decimal numbers\n", 1);
 			return (0);
