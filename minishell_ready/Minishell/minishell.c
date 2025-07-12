@@ -6,7 +6,7 @@
 /*   By: musoysal <musoysal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 14:49:00 by musoysal          #+#    #+#             */
-/*   Updated: 2025/07/06 06:55:12 by musoysal         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:00:00 by musoysal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,21 @@ static void	append_history_file(const char *filename, const char *line)
 	close(fd);
 }
 
+static void	remove_token(t_token **tokens, int idx)
+{
+	int	k;
+
+	free(tokens[idx]->str);
+	free(tokens[idx]);
+	k = idx;
+	while (tokens[k + 1])
+	{
+		tokens[k] = tokens[k + 1];
+		k++;
+	}
+	tokens[k] = NULL;
+}
+
 int	main(int ac, char **av, char **env)
 {
 	char	*input;
@@ -116,9 +131,7 @@ int	main(int ac, char **av, char **env)
 	int		i;
 	t_token	**tokens;
 	t_list	*cmds;
-	t_list	*tmp;
 	t_req	res;
-	t_shell	*cmd;
 
 	(void)ac;
 	res = setup(av, env);
@@ -146,16 +159,18 @@ int	main(int ac, char **av, char **env)
 				old = tokens[i]->str;
 				tokens[i]->str = expand_str(old, res.envp, tokens[i]->quote);
 				free(old);
+				if (!tokens[i]->str || tokens[i]->str[0] == '\0')
+				{
+					remove_token(tokens, i);
+					continue ;
+				}
 				i++;
 			}
 			cmds = parse_tokens(tokens, &res);
-			tmp = cmds;
-			while (tmp)
+			if (!cmds)
 			{
-				cmd = tmp->content;
-				if (cmd->full_cmd && cmd->full_cmd[0])
-					cmd->full_path = resolve_path(cmd->full_cmd[0], res.envp);
-				tmp = tmp->next;
+				free_tokens(tokens);
+				continue;
 			}
 			res.exit_stat = g_exit_status;
 			execute_cmds(cmds, &res);
@@ -167,4 +182,3 @@ int	main(int ac, char **av, char **env)
 	free_all(&res);
 	exit(g_exit_status);
 }
-
