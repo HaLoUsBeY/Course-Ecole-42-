@@ -6,7 +6,7 @@
 /*   By: musoysal <musoysal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:42:09 by musoysal          #+#    #+#             */
-/*   Updated: 2025/07/06 01:10:12 by musoysal         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:49:08 by musoysal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ void	free_cmds(t_list *cmds)
 		{
 			ft_double_free(&cmd->full_cmd);
 			free(cmd->full_path);
-			free(cmd->infile_path);
-			free(cmd->outfile_path);
+			free_redirects(cmd->redirects);
 			free(cmd);
 		}
 		free(cmds);
