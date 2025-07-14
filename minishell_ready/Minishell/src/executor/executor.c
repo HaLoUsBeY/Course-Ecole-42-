@@ -151,11 +151,16 @@ static void exec_single_builtin(t_shell *cmd, t_req *req, int input_fd)
 	restore_io(&backup_in, &backup_out);
 }
 
-static int handle_exec(t_shell *cmd, t_req *req,
-					   int *input_fd, pid_t *pid, int has_next)
+static int	handle_exec(
+		t_shell *cmd,
+		t_req *req,
+		int *input_fd,
+		pid_t *pid,
+		int has_next)
 {
-	int pipe_fd[2];
-	int out_fd;
+	int	pipe_fd[2];
+	int	out_fd;
+	int	real_in;
 
 	out_fd = STDOUT_FILENO;
 	if (has_next)
@@ -164,19 +169,23 @@ static int handle_exec(t_shell *cmd, t_req *req,
 			return (perror("pipe"), 1);
 		out_fd = pipe_fd[1];
 	}
-	*pid = exec_external_cmd(cmd, req, *input_fd, out_fd);
-	if (*input_fd != STDIN_FILENO)
-		close(*input_fd);
+	real_in = *input_fd;
+	if (cmd->infile != STDIN_FILENO)
+	{
+		if (*input_fd != STDIN_FILENO)
+			close(*input_fd);
+		real_in = cmd->infile;
+	}
+	*pid = exec_external_cmd(cmd, req, real_in, out_fd);
+	if (real_in != STDIN_FILENO)
+		close(real_in);
 	if (has_next)
 	{
 		close(pipe_fd[1]);
 		*input_fd = pipe_fd[0];
 	}
-	else
-	{
-		if (*input_fd != STDIN_FILENO)
-			close(*input_fd);
-	}
+	else if (*input_fd != STDIN_FILENO)
+		close(*input_fd);
 	return (0);
 }
 
