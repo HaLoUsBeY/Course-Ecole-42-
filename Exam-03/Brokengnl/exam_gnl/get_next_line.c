@@ -1,9 +1,4 @@
 #include "get_next_line.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>  
-#include <string.h>
 
 char *ft_strchar(char *s, char c)
 {
