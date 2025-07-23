@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musoysal <musoysal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haloztur <haloztur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 02:59:54 by haloztur          #+#    #+#             */
-/*   Updated: 2025/07/13 11:17:15 by musoysal         ###   ########.fr       */
+/*   Updated: 2025/07/20 20:18:54 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,35 @@ static int	is_numeric(const char *str)
 	return (1);
 }
 
-int	builtin_exit(char **args)
+int	builtin_exit(char **args, t_req *req)
 {
-	int	exit_code;
-
-	exit_code = 0;
 	ft_putendl_fd("exit", STDOUT_FILENO);
 	if (args[1])
 	{
 		if (!is_numeric(args[1]))
 		{
-			ms_error(ERR_NO_CMD, "exit: numeric argument required", 2);
+			rl_clear_history();
+			if (req)
+				free_all(req);
+			ms_error(ERR_NO_CMD, "exit: numeric argument required", 2, req);
 			exit(2);
 		}
 		if (args[2])
 		{
-			ms_error(ERR_NO_CMD, "exit: too many arguments", 1);
-			g_exit_status = 1;
+			ms_error(ERR_NO_CMD, "exit: too many arguments", 1, req);
+			if (req)
+				req->exit_stat = 1;
 			return (1);
 		}
-		exit_code = ft_atoi(args[1]);
+		if (req)
+			req->exit_stat = ft_atoi(args[1]);
 	}
-	g_exit_status = exit_code;
-	exit(exit_code);
+	rl_clear_history();
+	if (req)
+	{
+		free_all(req);
+		exit(req->exit_stat);
+	}
+	else
+		exit(0);
 }
