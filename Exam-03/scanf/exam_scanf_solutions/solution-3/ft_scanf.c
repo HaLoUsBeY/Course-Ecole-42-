@@ -293,3 +293,22 @@ int ft_scanf(const char *format, ...)
 // 	printf("girdiğiniz string: %s\n", string);
 // 	return 0;
 // }
+
+int main (void)
+{
+	int a;
+	char c;
+	char s[100]; // ✅ String için bellek ayır!
+
+	printf("Girdi formatı: sayı, karakter, string (örn: 42, A, merhaba)\n");
+	printf("Giriş: ");
+	
+	int result = ft_scanf("%d, %c, %s", &a, &c, s); // ✅ s, &s değil!
+	
+	printf("Okunan değe sayısı: %d\n", result);
+	printf("Sayı: %d\n", a);
+	printf("Karakter: %c\n", c);
+	printf("String: %s\n", s);
+
+	return 0;
+}
