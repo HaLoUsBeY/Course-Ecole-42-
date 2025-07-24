@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musoysal <musoysal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haloztur <haloztur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 12:28:41 by musoysal          #+#    #+#             */
-/*   Updated: 2025/07/13 14:33:48 by musoysal         ###   ########.fr       */
+/*   Updated: 2025/07/19 19:20:30 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../minishell.h"
-
-void	print_cd_error(char *arg, char *msg)
-{
-	ft_putstr_fd("minishell: cd: ", 2);
-	if (arg)
-	{
-		ft_putstr_fd(arg, 2);
-		ft_putstr_fd(": ", 2);
-	}
-	ft_putendl_fd(msg, 2);
-}
 
 static char	*try_expand_tilde(char *arg, t_req *req)
 {
