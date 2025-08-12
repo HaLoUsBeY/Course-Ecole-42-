@@ -17,8 +17,8 @@ $> ./permutations ab | cat -e
 ab$
 ba$
 $> ./permutations abc | cat -e
-a
-bc$acb$
+abc$
+acb$
 bac$
 bca$
 cab$
