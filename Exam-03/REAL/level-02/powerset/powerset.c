@@ -1,53 +1,51 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	print_subset(int *subset, int size)
+void show(int *fix, int fixsize)
 {
-	int	i = 0;
-
-	while (i < size)
-	{
-		printf("%d", subset[i]);
-		if (i + 1 != size)
-			printf(" ");
-		i++;
-	}
-	printf("\n");
+    for (int i = 0; i < fixsize; i++)
+    {
+        if (i > 0 )
+            printf(" ");
+        printf("%d", fix[i]);
+    }
+    printf("\n");
 }
 
-void	find_subsets(int target, int *set, int size, int *subset, int index, int pos, int sum)
+void go(int goal, int *arg, int argsize, int *fix, int fixsize, int idx, int sum)
 {
-	if (pos == size)
-	{
-		if (sum == target)
-			print_subset(subset, index);
-		return ;
-	}
-	subset[index] = set[pos];
-	find_subsets(target, set, size, subset, index + 1, pos + 1, sum + set[pos]);
-	find_subsets(target, set, size, subset, index, pos + 1, sum);
+    if (idx == argsize)
+    {
+        if (sum == goal)
+            show(fix, fixsize);
+        return;
+    }
+    fix[fixsize] = arg[idx];
+    go(goal, arg, argsize, fix, fixsize + 1, idx + 1, sum + arg[idx]);
+    go(goal, arg, argsize, fix, fixsize, idx + 1, sum);
 }
 
-int	main(int params, char **argv)
+int main (int ac, char **av)
 {
-	if (params < 2)
-		return (0);
+    if (ac < 2)
+        return 1;
+    int goal = atoi(av[1]);
+    int argsize = ac - 2;
+    int *arg = malloc(sizeof(int) * argsize);
+    int *fix = malloc(sizeof(int) * argsize);
 
-	int	target = atoi(argv[1]);
-	int	i = 0;
-	int	size = params - 2;
-	int	*set = malloc(sizeof(int) * size);
-	int	*subset = malloc(sizeof(int) * size);
+    if (!arg || !fix)
+    {
+        free(arg);
+        free(fix);
+        return 1;
+    }
 
-	if (!set || !subset)
-		return (1);
-	while (i < size)
-	{
-		set[i] = atoi(argv[i + 2]);
-		i++;
-	}
-	find_subsets(target, set, size, subset, 0, 0, 0);
-	free(set);
-	free(subset);
-	return (0);
+    for (int i = 0; i < argsize; i++)
+        arg[i] = atoi(av[i + 2]);
+    
+    go (goal, arg, argsize, fix, 0, 0, 0);
+    free(arg);
+    free(fix);
+    return (0);
 }

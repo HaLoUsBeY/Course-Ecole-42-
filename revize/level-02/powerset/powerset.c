@@ -12,6 +12,20 @@ void show(int *pick, int m)
     printf("\n");
 }
 
+// goal → Hedef toplam (ilk argümandan geliyor).
+
+// arr → Tüm sayıların olduğu dizi.
+
+// n → Kaç tane sayı olduğu.
+
+// pick → Şu ana kadar seçilen elemanları tutan dizi.
+
+// m → pick dizisinde şu an kaç eleman var (yani seçilen eleman sayısı).
+
+// idx → arr içinde şu an hangi index'te olduğumuz (rekürsiyonun derinliği).
+
+// sum → Şu ana kadar seçilen elemanların toplamı.
+
 void go(int goal, int *arr, int n, int *pick, int m, int idx, int sum)
 {
     if (idx == n)
@@ -30,7 +44,7 @@ void go(int goal, int *arr, int n, int *pick, int m, int idx, int sum)
 int main(int ac, char **av)
 {
     if (ac < 2)
-        return (0);
+        return (1);
 
     int goal = atoi(av[1]);
     int n = ac - 2;
