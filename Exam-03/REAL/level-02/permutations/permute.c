@@ -34,7 +34,7 @@ void permute(char *str, int start)
         write(1, "\n",1);
         return;
     }
-    for (int c = 'a'; c <= 'z'; c++) {
+    for (int c = 0; c <= 127; c++) {
         for (int i = start; str[i]; i++) {
             if (str[i] == c) {
                 swap(&str[start], &str[i]);
