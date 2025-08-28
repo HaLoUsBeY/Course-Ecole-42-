@@ -6,7 +6,7 @@
 /*   By: haloztur <haloztur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:37:59 by haloztur          #+#    #+#             */
-/*   Updated: 2025/08/27 11:37:59 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/08/28 10:53:14 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ int    ft_check(int ac, char **av)
                 j++;
             else if ((res = is_valid_space(av[i][j], av[i][j + 1], &flag)) == 1)
                 j++;
-            else if (res == 0)
-                return (1);
             else
                 return (1);
         }

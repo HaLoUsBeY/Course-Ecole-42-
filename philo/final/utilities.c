@@ -6,11 +6,21 @@
 /*   By: haloztur <haloztur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:28:22 by haloztur          #+#    #+#             */
-/*   Updated: 2025/08/27 20:20:00 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/08/28 13:02:30 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static int	ft_strlen(const char *str)
+{
+	int	lnght;
+
+	lnght = 0;
+	while (str[lnght] != '\0')
+		lnght++;
+	return (lnght);
+}
 
 void	print_status(t_philo *p, const char *status)
 {
@@ -35,7 +45,6 @@ void	print_status(t_philo *p, const char *status)
 	if (!p->sim->someone_died)
 		printf("%llu %u %s\n", rel, p->id, status);
 	pthread_mutex_unlock(&p->sim->death_mutex);
-	fflush(stdout);
 	pthread_mutex_unlock(&p->sim->print_mutex);
 }
 
@@ -50,7 +59,7 @@ void	ft_usleep(unsigned int ms)
 
 void	error_exit(const char *msg)
 {
-	write(2, msg, strlen(msg));
+	write(2, msg, ft_strlen(msg));
 	write(2, "\n", 1);
 	exit(1);
 }
@@ -84,9 +93,9 @@ unsigned int	ft_atoi_u(const char *str)
 
 unsigned long long	get_time_ms(void)
 {
-	struct timeval	tv;
+	struct timeval	time;
 
-	gettimeofday(&tv, NULL);
-	return ((unsigned long long)tv.tv_sec * 1000ULL
-		+ (unsigned long long)(tv.tv_usec / 1000ULL));
+	gettimeofday(&time, NULL);
+	return ((unsigned long long)time.tv_sec * 1000ULL
+		+ (unsigned long long)(time.tv_usec / 1000ULL));
 }
