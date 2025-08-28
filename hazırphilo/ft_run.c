@@ -6,13 +6,13 @@
 /*   By: haloztur <haloztur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:26:54 by haloztur          #+#    #+#             */
-/*   Updated: 2025/08/28 16:35:53 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:43:35 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	philo_sleep_and_think(t_philo *p)
+static void	philo_sleep(t_philo *p)
 {
 	print_status(p, "is sleeping");
 	ft_usleep(p->sim->time_to_sleep);
@@ -57,7 +57,7 @@ static void	*philo_routine(void *arg)
 		drop_forks(p);
 		if (philo_should_stop(p))
 			break ;
-		philo_sleep_and_think(p);
+		philo_sleep(p);
 	}
 	return (NULL);
 }

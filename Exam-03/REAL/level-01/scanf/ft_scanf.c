@@ -25,6 +25,7 @@ int match_char(FILE *f, char c)
 	{
 		if (ferror(f))
 			return -1;
+		return 0;
 	}
 	if (c_read == c)
 		return 1;
@@ -42,6 +43,7 @@ int scan_char(FILE *f, va_list ap)
 	{
 		if (ferror(f))
 			return -1;
+		return 0;
 	}
 	char *ptr = va_arg(ap, char *);
 	*ptr = (char) c;	

@@ -6,7 +6,7 @@
 /*   By: haloztur <haloztur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:28:28 by haloztur          #+#    #+#             */
-/*   Updated: 2025/08/28 16:35:40 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:40:42 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_philo
 	pthread_mutex_t		*right_fork;
 	unsigned int		meals_eaten;
 	unsigned long long	last_meal_time;
-	int					eating;
 	pthread_t			thread;
 	t_simulation		*sim;
 }	t_philo;

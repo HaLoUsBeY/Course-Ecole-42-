@@ -6,45 +6,32 @@
 /*   By: haloztur <haloztur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:37:59 by haloztur          #+#    #+#             */
-/*   Updated: 2025/08/28 16:35:48 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:48:08 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	is_valid_space(char c, char next, int *flag)
-{
-	if (ft_isspace(c) && next)
-	{
-		if (++(*flag) == 1)
-			return (1);
-		return (0);
-	}
-	return (-1);
-}
-
 static int	ft_check_arg(char *arg)
 {
-	int	j;
-	int	flag;
-	int	res;
+	int	j = 0;
+	unsigned long long num = 0;
 
-	j = 0;
-	flag = 0;
-	if (ft_isspace(arg[0]))
+	if (!arg || ft_isspace(arg[0]))
 		return (1);
 	while (arg[j])
 	{
-		if (ft_isdigit(arg[j]))
-			j++;
-		else
-		{
-			res = is_valid_space(arg[j], arg[j + 1], &flag);
-			if (res == 1)
-				j++;
-			else
-				return (1);
-		}
+		if (!ft_isdigit(arg[j]))
+			return (1);
+		j++;
+	}
+	j = 0;
+	while (arg[j])
+	{
+		num = num * 10 + (arg[j] - '0');
+		if (num > 4294967295ULL)
+			return (1);
+		j++;
 	}
 	return (0);
 }

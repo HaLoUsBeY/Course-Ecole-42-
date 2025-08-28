@@ -38,7 +38,6 @@ int main(int ac, char **av)
 {
 	if (ac != 2) return 0;
 	N = atoi(av[1]);
-	if (N <= 3) return 0;
 	pos = malloc(sizeof(int) * N);
 	solve(0);
 	free(pos);
