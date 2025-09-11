@@ -6,7 +6,7 @@
 /*   By: haloztur <haloztur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 14:00:37 by haloztur          #+#    #+#             */
-/*   Updated: 2025/08/28 16:35:51 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/09/11 11:40:25 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,21 @@ void	run_one_philo(t_philo *p)
 void	take_forks(t_philo *p)
 {
 	if (p->id % 2 == 0)
+	{
 		usleep(1000 * (p->id % 10));
-	pthread_mutex_lock(p->left_fork);
-	print_status(p, "has taken a fork");
-	pthread_mutex_lock(p->right_fork);
-	print_status(p, "has taken a fork");
+		pthread_mutex_lock(p->left_fork);
+		print_status(p, "has taken a fork");
+		pthread_mutex_lock(p->right_fork);
+		print_status(p, "has taken a fork");
+	}
+	else
+	{
+		usleep(500);
+		pthread_mutex_lock(p->right_fork);
+		print_status(p, "has taken a fork");
+		pthread_mutex_lock(p->left_fork);
+		print_status(p, "has taken a fork");
+	}
 }
 
 void	drop_forks(t_philo *p)

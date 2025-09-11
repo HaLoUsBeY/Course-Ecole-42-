@@ -6,7 +6,7 @@
 /*   By: haloztur <haloztur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:26:54 by haloztur          #+#    #+#             */
-/*   Updated: 2025/08/28 19:43:35 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/09/11 11:37:43 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	philo_sleep(t_philo *p)
 static void	wait(unsigned int id)
 {
 	if (id % 2 == 0)
-		usleep(500);
+		usleep(1000);
 }
 
 static int	philo_should_stop(t_philo *p)

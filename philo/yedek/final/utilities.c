@@ -6,7 +6,7 @@
 /*   By: haloztur <haloztur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:28:22 by haloztur          #+#    #+#             */
-/*   Updated: 2025/08/27 20:20:00 by haloztur         ###   ########.fr       */
+/*   Updated: 2025/08/31 21:10:01 by haloztur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	print_status(t_philo *p, const char *status)
 	unsigned long long	now;
 	unsigned long long	rel;
 
-	/* Ölümden sonra yazma yok */
 	pthread_mutex_lock(&p->sim->death_mutex);
 	if (p->sim->someone_died)
 	{
@@ -30,12 +29,10 @@ void	print_status(t_philo *p, const char *status)
 	rel = now - p->sim->start_time;
 
 	pthread_mutex_lock(&p->sim->print_mutex);
-	/* Yazarken de ölüm tekrar kontrol (yarış önleme) */
 	pthread_mutex_lock(&p->sim->death_mutex);
 	if (!p->sim->someone_died)
 		printf("%llu %u %s\n", rel, p->id, status);
 	pthread_mutex_unlock(&p->sim->death_mutex);
-	fflush(stdout);
 	pthread_mutex_unlock(&p->sim->print_mutex);
 }
 

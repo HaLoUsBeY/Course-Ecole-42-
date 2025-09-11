@@ -12,7 +12,7 @@ SRCS = philo.c \
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Wextra -Werror -pthread #-fsanitize=address
 
 all: $(NAME)
 
