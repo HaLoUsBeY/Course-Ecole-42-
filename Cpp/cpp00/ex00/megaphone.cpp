@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cctype>
-//using namespace std;
+
 int	main(int argc, char *argv[])
 {
 	if (argc == 1)
@@ -13,7 +13,7 @@ int	main(int argc, char *argv[])
 	{
 		for (int char_idx = 0; argv[arg_idx][char_idx]; char_idx++)
 		{
-			std::cout << (char)std::toupper(argv[arg_idx][char_idx]);
+			std::cout << (char)std::toupper(argv[arg_idx][char_idx]);//static cast 65 -> 'A;
 		}
 	}
 	std::cout << std::endl;

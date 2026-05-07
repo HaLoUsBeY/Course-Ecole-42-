@@ -1,19 +1,11 @@
 #include "PhoneBook.hpp"
-#include <iostream>
-#include <iomanip>
-#include <sstream>
 
 PhoneBook::PhoneBook(void)
-	: _index(0)
 {
-	std::cout<<"Ben oluştum PhoneBook"<< std::endl;
+    this->_index = 0;
 }
 
-PhoneBook::~PhoneBook(void)
-{
-		std::cout<<"Ben  bittim  PhoneBook"<< std::endl;
-
-}
+PhoneBook::~PhoneBook(void){}
 
 void	PhoneBook::addContact(void)
 {
@@ -47,7 +39,6 @@ void	PhoneBook::displayContactList(void) const
 		std::string lastName = this->_contacts[i].getLastName();
 		std::string nickname = this->_contacts[i].getNickname();
 		
-		// Fazla uzun ise kısalt
 		if (firstName.length() > 9)
 			firstName = firstName.substr(0, 8) + ".";
 		if (lastName.length() > 9)
@@ -62,31 +53,37 @@ void	PhoneBook::displayContactList(void) const
 	}
 }
 
-void	PhoneBook::searchContact(void) const
+void PhoneBook::searchContact(void) const
 {
-	this->displayContactList();
-	
-	std::cout << "Enter the index of the contact: ";
-	std::string input;
-	
-	if (!std::getline(std::cin, input))
-		return;
-	
-	std::stringstream ss(input);
-	int index;
-	
-	if (!(ss >> index) || index < 0 || index > 7)
-	{
-		std::cout << "Invalid index!" << std::endl;
-		return;
-	}
-	
-	std::string firstName = this->_contacts[index].getFirstName();
-	if (firstName.empty())
-	{
-		std::cout << "Contact not found!" << std::endl;
-		return;
-	}
-	
-	this->_contacts[index].displayContact();
+    this->displayContactList();
+    
+    std::cout << "Enter the index of the contact: ";
+    std::string input;
+    
+    if (!std::getline(std::cin, input))
+        return;
+    
+    if (input.length() == 1 && std::isdigit(input[0]))
+    {
+        int index = input[0] - '0';
+        
+        if (index < 0 || index > 7)
+        {
+            std::cout << "Invalid index!" << std::endl;
+            return;
+        }
+        
+        std::string firstName = this->_contacts[index].getFirstName();
+        if (firstName.empty())
+        {
+            std::cout << "Contact not found!" << std::endl;
+            return;
+        }
+        
+        this->_contacts[index].displayContact();
+    }
+    else
+    {
+        std::cout << "Invalid input!" << std::endl;
+    }
 }
