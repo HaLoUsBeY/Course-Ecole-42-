@@ -1,12 +1,19 @@
 #include "Zombie.hpp"
 
-int main()
+int main(void)
 {
-	Zombie *z1 = newZombie("Halousbey");
-	z1->announce();
-	delete z1;
+    Zombie* heapZombie1 = newZombie("Walker");
+    Zombie* heapZombie2 = newZombie("Runner");
+    
+    heapZombie1->announce();//heap object(->)
+    heapZombie2->announce();
+    
+    delete heapZombie1;
+    delete heapZombie2;
 
-	randomChump("StackZombie");
+    randomChump("Crawler");
+    randomChump("Jumper");
 
-	return 0;
+    std::cout << "\nGood Bye" << std::endl;
+    return 0;
 }

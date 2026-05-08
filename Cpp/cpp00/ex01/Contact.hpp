@@ -15,10 +15,10 @@ private:
 	std::string	_darkestSecret;
 
 public:
-	Contact(void);
-	~Contact(void);
+	Contact(void);//constructor
+	~Contact(void);//destructor
 	
-    bool	setContact(void);
+    bool	setContact(void);//set
 	std::string	getFirstName(void) const;
 	std::string	getLastName(void) const;
 	std::string	getNickname(void) const;

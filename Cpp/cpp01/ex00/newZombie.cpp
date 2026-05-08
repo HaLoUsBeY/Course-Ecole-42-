@@ -1,6 +1,8 @@
 #include "Zombie.hpp"
 
-Zombie* newZombie(std::string name)
+Zombie* newZombie(std::string name)//zombie created
 {
-	return new Zombie(name);
+	Zombie *zombie;//new pointer
+	zombie = new Zombie(name);//heap data and ->constructor
+	return (zombie);//return pointer
 }

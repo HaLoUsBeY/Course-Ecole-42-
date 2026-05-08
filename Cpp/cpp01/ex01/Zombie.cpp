@@ -1,20 +1,20 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie() : name("Unnamed")
+Zombie::Zombie()
 {
+    std::cout << "A nameless zombie spawns in the horde..." << std::endl;
 }
 
 Zombie::~Zombie()
 {
-	std::cout << name << " is destroyed!" << std::endl;
+    std::cout << this->name << " is destroyed." << std::endl;
 }
 
-void Zombie::setName(std::string name)
-{
-	this->name = name;
+void Zombie::setName(std::string name) {
+    this->name = name;
 }
 
 void Zombie::announce(void)
 {
-	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+    std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

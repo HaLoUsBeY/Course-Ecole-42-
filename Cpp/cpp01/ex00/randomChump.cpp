@@ -2,6 +2,6 @@
 
 void randomChump(std::string name)
 {
-	Zombie z(name);
-	z.announce();
-}
+    Zombie temporaryZombie(name);//stack
+    temporaryZombie.announce(); //stack object (.)
+}//delete stack
