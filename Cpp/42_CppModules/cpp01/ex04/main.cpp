@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 {
     if (argc != 4)
     {
-        std::cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>" << std::endl;
+        std::cout << "Usage: " << argv[0] << " <filename> <s1> <s2>" << std::endl;
         return 1;
     }
     
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     std::ifstream infile(filename.c_str());
     if (!infile.is_open())
     {
-        std::cerr << "Error: Could not open file '" << filename << "'" << std::endl;
+        std::cout << "Error: Could not open file '" << filename << "'" << std::endl;
         return 1;
     }
     
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
     
     if (infile.bad())
     {
-        std::cerr << "Error: Failed to read file '" << filename << "'" << std::endl;
+        std::cout << "Error: Failed to read file '" << filename << "'" << std::endl;
         infile.close();
         return 1;
     }
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
     
     if (!outfile.is_open())
     {
-        std::cerr << "Error: Could not create file '" << outfilename << "'" << std::endl;
+        std::cout << "Error: Could not create file '" << outfilename << "'" << std::endl;
         return 1;
     }
     

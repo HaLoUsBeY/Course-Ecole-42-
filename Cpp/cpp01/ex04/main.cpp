@@ -26,8 +26,8 @@ int main(int argc, char **argv)
 {
     if (argc != 4)
 	{
-        std::cerr << "Error: Missing or extra parameter!" << std::endl;
-        std::cerr << "Usage: ./sed_is_for_losers <dosya_adi> <s1> <s2>" << std::endl;
+        std::cout << "Error: Missing or extra parameter!" << std::endl;
+        std::cout << "Usage: ./sed_is_for_losers <file_name> <s1> <s2>" << std::endl;
         return 1;
     }
 
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     std::ifstream inFile(filename.c_str());//(C++98 -> .c_str())
     if (!inFile.is_open())
 	{
-        std::cerr << "Error: '" << filename << "' The file could not be opened or was not found!" << std::endl;
+        std::cout << "Error: '" << filename << "' The file could not be opened or was not found!" << std::endl;
         return 1;
     }
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
     std::ofstream outFile(outFilename.c_str());
     if (!outFile.is_open())
 	{
-        std::cerr << "Error: Unable to create a new file!" << std::endl;
+        std::cout << "Error: Unable to create a new file!" << std::endl;
         inFile.close();
         return 1;
     }

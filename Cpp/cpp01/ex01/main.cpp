@@ -8,7 +8,7 @@ int main(void)
     
     if (!myHorde)
 	{
-        std::cerr << "Failed to create zombie horde (Invalid number or allocation failed)." << std::endl;
+        std::cout << "Failed to create zombie horde (Invalid number or allocation failed)." << std::endl;
         return 1;
     }
     
