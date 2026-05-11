@@ -1,30 +1,34 @@
 #include "ScavTrap.hpp"
 
 // Default Constructor
-ScavTrap::ScavTrap(void) : ClapTrap() {
-    this->_name = "Unnamed_Scav"; // Alt tire eklendi!
+ScavTrap::ScavTrap(void) : ClapTrap()
+{
+    this->_name = "Unnamed_Scav";
     this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackDamage = 20;
     std::cout << "ScavTrap default constructor called for " << this->_name << std::endl;
 }
 
-// Parametreli Constructor
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
+// Parameter Constructor
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+{
     this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackDamage = 20;
     std::cout << "ScavTrap parameterized constructor called for " << this->_name << std::endl;
 }
 
-// Copy Constructor (Manuel Yaklaşım - Evaluator Tuzağı)
-ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy) {
+// Copy Constructor
+ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
+{
     std::cout << "ScavTrap copy constructor called" << std::endl;
     *this = copy; 
 }
 
-// Assignment Operator (Manuel Yaklaşım)
-ScavTrap &ScavTrap::operator=(const ScavTrap &copy) {
+// Assignment Operator
+ScavTrap &ScavTrap::operator=(const ScavTrap &copy)
+{
     std::cout << "ScavTrap copy assignment operator called" << std::endl;
     if (this != &copy) {
         this->_name = copy._name;
@@ -36,12 +40,14 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &copy) {
 }
 
 // Destructor
-ScavTrap::~ScavTrap(void) {
+ScavTrap::~ScavTrap(void)
+{
     std::cout << "ScavTrap destructor called for " << this->_name << std::endl;
 }
 
-// Overridden (Ezilmiş) Attack Fonksiyonu
-void ScavTrap::attack(const std::string &target) {
+// Overridden -> Attack Foncktion
+void ScavTrap::attack(const std::string &target)
+{
     if (this->_hitPoints == 0 || this->_energyPoints == 0) {
         std::cout << "ScavTrap " << this->_name << " can't attack, no hit points or energy points left!" << std::endl;
         return;
@@ -51,7 +57,7 @@ void ScavTrap::attack(const std::string &target) {
               << ", causing " << this->_attackDamage << " points of massive damage!" << std::endl;
 }
 
-// Yeni Yetenek
-void ScavTrap::guardGate(void) {
+void ScavTrap::guardGate(void)
+{
     std::cout << "ScavTrap " << this->_name << " is now in gate keeper mode. None shall pass!" << std::endl;
 }

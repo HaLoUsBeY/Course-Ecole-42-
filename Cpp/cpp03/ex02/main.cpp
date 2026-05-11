@@ -4,24 +4,21 @@
 
 int main(void)
 {
-    std::cout << "--- CREATING THE FAMILY ---" << std::endl;
-    ClapTrap ct("Clappy");
-    ScavTrap st("Scavy");
-    FragTrap ft("Fraggy");
+    ClapTrap ct("Laz Ziya");
+    ScavTrap st("Hüsrev Ağa");
+    FragTrap ft("Memati");
 
-    std::cout << "\n--- ATTACK COMPARISON ---" << std::endl;
-    ct.attack("Target"); // Orijinal ClapTrap mesajı
-    st.attack("Target"); // Ezilmiş (Overridden) Vahşi ScavTrap mesajı
-    ft.attack("Target"); // FragTrap kendi attack'ı olmadığı için Orijinal ClapTrap mesajını kullanır!
+    ct.attack("Büyük İskender");
+    st.attack("Çeto");
+    ft.attack("Testere Necmi");
 
-    std::cout << "\n--- SPECIAL ABILITIES ---" << std::endl;
     st.guardGate();
     ft.highFivesGuys();
 
-    std::cout << "\n--- DAMAGE & REPAIR ---" << std::endl;
-    ft.takeDamage(80);
+    st.takeDamage(80);
+    st.beRepaired(20);
+    ft.takeDamage(50);
     ft.beRepaired(30);
 
-    std::cout << "\n--- DESTRUCTION ---" << std::endl;
     return 0;
 }
