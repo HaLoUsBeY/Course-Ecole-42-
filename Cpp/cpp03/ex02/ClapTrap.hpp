@@ -1,26 +1,29 @@
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
 
-#include <string>
 #include <iostream>
+#include <string>
 
 class ClapTrap
 {
-protected:
-	std::string name;
-	unsigned int hitPoints;
-	unsigned int energyPoints;
-	unsigned int attackDamage;
+    protected: // Kalıtım için (Aile Kasası) private -> protected yapıldı!
+        std::string     _name;
+        unsigned int    _hitPoints;
+        unsigned int    _energyPoints;
+        unsigned int    _attackDamage;
 
-public:
-	ClapTrap(void);
-	ClapTrap(std::string name);
-	ClapTrap(const ClapTrap &copy);
-	ClapTrap &operator=(const ClapTrap &copy);
-	~ClapTrap();
-	void attack(const std::string &target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
+    public:
+        // --- Orthodox Canonical Form ---
+        ClapTrap();
+        ClapTrap(const std::string& name);
+        ClapTrap(const ClapTrap& src);
+        ClapTrap& operator=(const ClapTrap& rhs);
+        ~ClapTrap();
+
+        // --- Actions ---
+        void attack(const std::string& target);
+        void takeDamage(unsigned int amount);
+        void beRepaired(unsigned int amount);
 };
 
 #endif

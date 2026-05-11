@@ -6,7 +6,7 @@
 
 class ClapTrap
 {
-    private:
+    protected: // Kalıtım için (Aile Kasası) private -> protected yapıldı!
         std::string     _name;
         unsigned int    _hitPoints;
         unsigned int    _energyPoints;

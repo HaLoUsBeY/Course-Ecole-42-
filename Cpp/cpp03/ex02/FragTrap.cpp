@@ -1,48 +1,50 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void) : ClapTrap()
-{
-	std::cout << "FragTrap default constructor called" << std::endl;
-	this->name = "Unknown";
-	this->hitPoints = 100;
-	this->energyPoints = 100;
-	this->attackDamage = 30;
+// Default Constructor
+FragTrap::FragTrap(void) : ClapTrap() {
+    this->_name = "Unnamed_Frag";
+    this->_hitPoints = 100;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
+    std::cout << "FragTrap default constructor called for " << this->_name << std::endl;
 }
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
-{
-	std::cout << "FragTrap constructor called" << std::endl;
-	this->name = name;
-	this->hitPoints = 100;
-	this->energyPoints = 100;
-	this->attackDamage = 30;
+
+// Parametreli Constructor
+FragTrap::FragTrap(std::string name) : ClapTrap(name) {
+    this->_hitPoints = 100;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
+    std::cout << "FragTrap parameterized constructor called for " << this->_name << std::endl;
 }
-FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
-{
-	std::cout << "FragTrap copy constructor called" << std::endl;
-	*this = copy;
+
+// Copy Constructor (Manuel Yaklaşım)
+FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy) {
+    std::cout << "FragTrap copy constructor called" << std::endl;
+    *this = copy; 
 }
-FragTrap::~FragTrap(void)
-{
-	std::cout << "FragTrap destructor called" << std::endl;
+
+// Assignment Operator (Manuel Yaklaşım)
+FragTrap &FragTrap::operator=(const FragTrap &copy) {
+    std::cout << "FragTrap copy assignment operator called" << std::endl;
+    if (this != &copy) {
+        this->_name = copy._name;
+        this->_hitPoints = copy._hitPoints;
+        this->_energyPoints = copy._energyPoints;
+        this->_attackDamage = copy._attackDamage;
+    }
+    return *this;
 }
-void FragTrap::highFivesGuys(void)
-{
-	if (this->hitPoints <= 0 || this->energyPoints <= 0)
-	{
-		std::cout << this->name << " is dead or has no energy" << std::endl;
-		return;
-	}
-	std::cout << this->name << "a positive high-fives request" << std::endl;
+
+// Destructor
+FragTrap::~FragTrap(void) {
+    std::cout << "FragTrap destructor called for " << this->_name << std::endl;
 }
-FragTrap &FragTrap::operator=(const FragTrap &copy)
-{
-	std::cout << "FragTrap copy assignment operator called" << std::endl;
-	if (this != &copy)
-	{
-		this->name = copy.name;
-		this->hitPoints = copy.hitPoints;
-		this->energyPoints = copy.energyPoints;
-		this->attackDamage = copy.attackDamage;
-	}
-	return *this;
+
+// Yeni Yetenek
+void FragTrap::highFivesGuys(void) {
+    if (this->_hitPoints == 0 || this->_energyPoints == 0) {
+        std::cout << "FragTrap " << this->_name << " is in no condition to high five anyone!" << std::endl;
+        return;
+    }
+    std::cout << "FragTrap " << this->_name << " enthusiastically requests a positive high five! ✋" << std::endl;
 }

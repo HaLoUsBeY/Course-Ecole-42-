@@ -5,14 +5,15 @@
 
 class FragTrap : public ClapTrap
 {
+    public:
+        FragTrap(void);
+        FragTrap(std::string name);
+        FragTrap(const FragTrap &copy);
+        FragTrap &operator=(const FragTrap &copy);
+        ~FragTrap();
 
-public:
-	FragTrap(void);
-	FragTrap(std::string name);
-	FragTrap(const FragTrap &copy);
-	FragTrap &operator=(const FragTrap &copy);
-	~FragTrap();
-	void highFivesGuys(void);
+        // --- Yeni Yetenek (Attack override edilmedi, atadan miras kullanılacak) ---
+        void highFivesGuys(void);
 };
 
 #endif

@@ -1,62 +1,57 @@
 #include "ScavTrap.hpp"
 
 // Default Constructor
-// Önce atası olan ClapTrap doğar, sonra ScavTrap'in kendi değerleri atanır.
-ScavTrap::ScavTrap() : ClapTrap("Unnamed_Scav") {
+ScavTrap::ScavTrap(void) : ClapTrap() {
+    this->_name = "Unnamed_Scav"; // Alt tire eklendi!
     this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackDamage = 20;
-    std::cout << "ScavTrap Default Constructor called for " << this->_name << std::endl;
+    std::cout << "ScavTrap default constructor called for " << this->_name << std::endl;
 }
 
 // Parametreli Constructor
-ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
     this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackDamage = 20;
-    std::cout << "ScavTrap Parameterized Constructor called for " << this->_name << std::endl;
+    std::cout << "ScavTrap parameterized constructor called for " << this->_name << std::endl;
 }
 
-// Copy Constructor (Profesyonel yaklaşım)
-// "src" nesnesini doğrudan ClapTrap'in kopya yapıcısına yolluyoruz. 
-// O kendi içindeki isim, can, hasar ne varsa otomatik hallediyor!
-ScavTrap::ScavTrap(const ScavTrap& src) : ClapTrap(src) {
-    std::cout << "ScavTrap Copy Constructor called" << std::endl;
+// Copy Constructor (Manuel Yaklaşım - Evaluator Tuzağı)
+ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy) {
+    std::cout << "ScavTrap copy constructor called" << std::endl;
+    *this = copy; 
 }
 
-// Assignment Operator (Kalıtım mantığına uygun atama)
-ScavTrap& ScavTrap::operator=(const ScavTrap& rhs) {
-    std::cout << "ScavTrap Copy Assignment Operator called" << std::endl;
-    if (this != &rhs) {
-        // Tek tek this->_name = rhs._name demek yerine; üst sınıfın operatörünü çağırıyoruz:
-        ClapTrap::operator=(rhs); 
+// Assignment Operator (Manuel Yaklaşım)
+ScavTrap &ScavTrap::operator=(const ScavTrap &copy) {
+    std::cout << "ScavTrap copy assignment operator called" << std::endl;
+    if (this != &copy) {
+        this->_name = copy._name;
+        this->_hitPoints = copy._hitPoints;
+        this->_energyPoints = copy._energyPoints;
+        this->_attackDamage = copy._attackDamage;
     }
     return *this;
 }
 
 // Destructor
-ScavTrap::~ScavTrap() {
-    std::cout << "ScavTrap Destructor called for " << this->_name << std::endl;
+ScavTrap::~ScavTrap(void) {
+    std::cout << "ScavTrap destructor called for " << this->_name << std::endl;
 }
 
 // Overridden (Ezilmiş) Attack Fonksiyonu
-// ClapTrap'in attack'ından farklı bir mesaj basmak zorunda (Subject Kuralı)
-void ScavTrap::attack(const std::string& target) {
-    if (this->_hitPoints == 0) {
-        std::cout << "ScavTrap " << this->_name << " is just a pile of scrap and cannot attack!" << std::endl;
+void ScavTrap::attack(const std::string &target) {
+    if (this->_hitPoints == 0 || this->_energyPoints == 0) {
+        std::cout << "ScavTrap " << this->_name << " can't attack, no hit points or energy points left!" << std::endl;
         return;
     }
-    if (this->_energyPoints == 0) {
-        std::cout << "ScavTrap " << this->_name << " is out of juice (0 EP) and cannot attack!" << std::endl;
-        return;
-    }
-
-    this->_energyPoints--;
+    this->_energyPoints--; 
     std::cout << "ScavTrap " << this->_name << " violently strikes " << target 
-              << " for " << this->_attackDamage << " points of massive damage!" << std::endl;
+              << ", causing " << this->_attackDamage << " points of massive damage!" << std::endl;
 }
 
 // Yeni Yetenek
-void ScavTrap::guardGate() {
-    std::cout << "ScavTrap " << this->_name << " has firmly entered Gate keeper mode. None shall pass!" << std::endl;
+void ScavTrap::guardGate(void) {
+    std::cout << "ScavTrap " << this->_name << " is now in gate keeper mode. None shall pass!" << std::endl;
 }

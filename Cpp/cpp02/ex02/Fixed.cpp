@@ -123,7 +123,7 @@ Fixed Fixed::operator/(const Fixed& rhs) const
 
 // --- Increment / Decrement Operators ---
 // Prefix (++a)
-Fixed& Fixed::operator++(void)//a++ = printf(a+1) result -> a = a + 1
+Fixed& Fixed::operator++(void)//++a = printf(a+1) result -> a = a + 1
 {
     this->_rawBits++;
     return *this;
