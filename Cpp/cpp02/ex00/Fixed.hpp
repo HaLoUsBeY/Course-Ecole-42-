@@ -5,20 +5,20 @@
 
 class Fixed
 {
-    private:
-        int                 _rawBits; // Sayının ham halini tutacak
-        static const int    _fractionalBits = 8; // Her zaman 8 kalacak sabit
+	private:
+		int                 _rawBits;//fixed point
+		static const int    _fractionalBits = 8;//2^8
 
-    public:
-        // --- Ortodoks Kanonik Form ---
-        Fixed();                                // 1. Default constructor
-        Fixed(const Fixed& src);                // 2. Copy constructor
-        Fixed& operator=(const Fixed& rhs);     // 3. Copy assignment operator
-        ~Fixed();                               // 4. Destructor
+	public:
+		// --- orthodox canonical form ---
+		Fixed();                                //Default constructor
+		Fixed(const Fixed& src);                //Copy constructor
+		Fixed& operator=(const Fixed& rhs);    	//Copy assignment operator
+		~Fixed();                              	//Destructor
 
-        // --- Sınıfa Özel Fonksiyonlar ---
-        int     getRawBits(void) const;
-        void    setRawBits(int const raw);
+
+		int     getRawBits(void) const;
+		void    setRawBits(int const raw);
 };
 
 #endif

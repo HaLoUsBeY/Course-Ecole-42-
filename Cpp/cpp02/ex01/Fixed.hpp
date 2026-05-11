@@ -11,11 +11,11 @@ class Fixed
         static const int    _fractionalBits = 8;
 
     public:
-        // --- othodox canonical form ---
-        Fixed();
-        Fixed(const Fixed& src);
-        Fixed& operator=(const Fixed& rhs);
-        ~Fixed();
+        // --- orthodox canonical form ---
+        Fixed();                                 //Default constructor
+        Fixed(const Fixed& src);                 //Copy constructor
+        Fixed& operator=(const Fixed& rhs);      //Copy assignment operator
+        ~Fixed();                                //Destructor
 
         // --- constructer and parameter ---
         Fixed(const int n);

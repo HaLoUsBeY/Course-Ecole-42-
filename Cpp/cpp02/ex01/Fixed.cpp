@@ -19,7 +19,7 @@ Fixed::Fixed(const int n)//b = 10 -> rawbits = 10 * 256 = 2560
 Fixed::Fixed(const float f)
 {
     std::cout << "Float constructor called" << std::endl;
-    this->_rawBits = (int)roundf(f * (1 << _fractionalBits)); //static cast 65 -> 'A;
+    this->_rawBits = (int)roundf(f * (1 << _fractionalBits)); //static cast float -> int;
 }
 
 //Copy Constructor
