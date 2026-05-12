@@ -8,7 +8,7 @@ int main()
 {
     std::cout << "===== 1. DOĞRU POLİMORFİZM (VIRTUAL VAR) =====" << std::endl;
     const Animal* meta = new Animal();
-    const Animal* j = new Dog();
+    const Animal* j = new Dog();//((Dog*)j)->kemik_gom(); ->Downcasting (Aşağı Çevrim)
     const Animal* i = new Cat();
 
     std::cout << "\nTürler:" << std::endl;
@@ -43,3 +43,22 @@ int main()
 
     return 0;
 }
+
+
+
+
+/*
+// 3 kapasiteli tek bir "Animal Pointer" dizisi açıyoruz
+Animal* hayvanat_bahcesi[3];
+
+// Hepsini AYNI dizi üzerinden yönetiyoruz!
+hayvanat_bahcesi[0] = new Animal(); // Düz hayvan
+hayvanat_bahcesi[1] = new Dog();    // Köpek
+hayvanat_bahcesi[2] = new Cat();    // Kedi
+
+// Döngüyle tek seferde hepsini seslendiriyoruz
+for (int k = 0; k < 3; k++) {
+    hayvanat_bahcesi[k]->makeSound(); 
+    // virtual kelimesi sayesinde 1. sıradaki havlar, 2. sıradaki miyavlar!
+}
+*/

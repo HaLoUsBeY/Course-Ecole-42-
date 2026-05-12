@@ -1,0 +1,11 @@
+=======================================
+|          SCAVTRAP NESNESİ           |
+|  ---------------------------------  |
+|  |       CLAPTRAP (BABA/ÇEKİRDEK)|  | -> ÖNCE BU İNŞA EDİLİR!
+|  |  - _name                      |  |
+|  |  - _hitPoints                 |  |
+|  |  - _energyPoints              |  |
+|  ---------------------------------  |
+|  + ScavTrap'in kendi ekstra kodları | -> SONRA BU EKLENİR!
+|  + guardGate() yeteneği             |
+=======================================
