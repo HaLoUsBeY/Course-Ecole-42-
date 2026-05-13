@@ -11,8 +11,7 @@ class Dog : public Animal
         Dog &operator=(const Dog &rhs);
         ~Dog();
 
-        // override keyword'ü C++11'dir, biz C++98'de olduğumuz için sadece virtual yazıyoruz
-        virtual void makeSound() const;
+        void makeSound() const;
 };
 
 #endif

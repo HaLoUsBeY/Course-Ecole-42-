@@ -46,7 +46,7 @@ ScavTrap::~ScavTrap(void)
 }
 
 // Overridden -> Attack Foncktion
-void ScavTrap::attack(const std::string &target)
+void ScavTrap::attack(const std::string &target)//Function Overriding
 {
     if (this->_hitPoints == 0 || this->_energyPoints == 0) {
         std::cout << "ScavTrap " << this->_name << " can't attack, no hit points or energy points left!" << std::endl;

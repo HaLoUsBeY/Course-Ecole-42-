@@ -14,11 +14,10 @@ public:
 	Dog(std::string type);
 	Dog(const Dog &other);
 	Dog &operator=(const Dog &other);
-	virtual ~Dog();
+	~Dog();
 
-	// member functions
 	virtual void makeSound() const;
-	Brain* getBrain() const; // getter for brain (needed for testing)
+	Brain* getBrain() const;
 };
 
 #endif

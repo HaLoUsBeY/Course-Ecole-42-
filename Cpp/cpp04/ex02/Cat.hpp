@@ -14,11 +14,10 @@ public:
 	Cat(std::string type);
 	Cat(const Cat &other);
 	Cat &operator=(const Cat &other);
-	virtual ~Cat();
+	~Cat();
 
-	// member functions
 	virtual void makeSound() const;
-	Brain* getBrain() const; // getter for brain (needed for testing)
+	Brain* getBrain() const;
 };
 
 #endif

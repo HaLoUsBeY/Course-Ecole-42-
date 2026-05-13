@@ -14,9 +14,9 @@ class WrongAnimal
         WrongAnimal(std::string type);
         WrongAnimal(const WrongAnimal &src);
         WrongAnimal &operator=(const WrongAnimal &rhs);
-        ~WrongAnimal(); // Bilerek virtual YAPMIYORUZ!
+        ~WrongAnimal();//static binding x Polimorphisim
 
-        void makeSound() const; // Bilerek virtual YAPMIYORUZ!
+        void makeSound() const;
         std::string getType() const;
 };
 

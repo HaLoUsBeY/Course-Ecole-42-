@@ -6,11 +6,11 @@
 
 class ClapTrap
 {
-    protected: //inheritance
+    private:
         std::string     _name;
-        unsigned int    _hitPoints;
-        unsigned int    _energyPoints;
-        unsigned int    _attackDamage;
+        unsigned int    _hitPoints;//heal
+        unsigned int    _energyPoints;//stamina
+        unsigned int    _attackDamage;//damage
 
     public:
         // --- Orthodox Canonical Form ---

@@ -12,7 +12,7 @@ class ScavTrap : public ClapTrap //inheritance -> main okey
         ScavTrap &operator=(const ScavTrap &copy);
         ~ScavTrap();
 
-        void attack(const std::string &target);
+        void attack(const std::string &target);//Function Overriding
         void guardGate(void);
 };
 

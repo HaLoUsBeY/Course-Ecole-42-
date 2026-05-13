@@ -7,8 +7,7 @@
 class Brain
 {
     private:
-        // Fikirler kesinlikle private olmalı! (Encapsulation)
-        std::string _ideas[100];
+        std::string _ideas[100];//Encapsulation
 
     public:
         Brain();

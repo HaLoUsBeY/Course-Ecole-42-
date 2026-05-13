@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-class Animal
+class Animal//abstract class
 {
     protected:
         std::string _type;
@@ -16,10 +16,7 @@ class Animal
         Animal &operator=(const Animal &rhs);
         virtual ~Animal();
 
-        // BÜYÜ BURADA: "= 0" ekleyerek bunu "Pure Virtual" (Saf Sanal) yaptık.
-        // Artık Animal sınıfı soyut (Abstract) bir sınıftır ve tek başına yaratılamaz!
-        virtual void makeSound() const = 0; 
-        
+        virtual void makeSound() const = 0;  //pure virtual
         std::string getType() const;
 };
 

@@ -1,34 +1,47 @@
 #include "Animal.hpp"
 
-Animal::Animal() : _type("Default_Animal") {
-    std::cout << "Animal Default Constructor called" << std::endl;
+//Default Constructor
+Animal::Animal() : _type("Unknown")
+{
+	std::cout << "Animal default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type) : _type(type) {
-    std::cout << "Animal Parameterized Constructor called" << std::endl;
+//Parameter Constructor
+Animal::Animal(std::string type) : _type(type)
+{
+	std::cout << "Animal constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &src) {
-    std::cout << "Animal Copy Constructor called" << std::endl;
-    *this = src;
+//Copy Constructor
+Animal::Animal(const Animal &other) : _type(other._type)
+{
+	std::cout << "Animal copy constructor called" << std::endl;
+	*this = other;//shallow copy(default)
 }
 
-Animal &Animal::operator=(const Animal &rhs) {
-    std::cout << "Animal Assignment Operator called" << std::endl;
-    if (this != &rhs) {
-        this->_type = rhs._type;
-    }
-    return *this;
+//Copy Assignment Operator (deep copy)
+Animal &Animal::operator=(const Animal &other)
+{
+	if (this != &other)
+		_type = other._type;
+	std::cout << "Animal copy assignment operator called" << std::endl;
+	return *this;
 }
 
-Animal::~Animal() {
-    std::cout << "Animal Destructor called" << std::endl;
+//destructor
+Animal::~Animal()
+{
+	std::cout << "Animal destructor called" << std::endl;
 }
 
-void Animal::makeSound() const {
-    std::cout << "* Some weird generic animal noises *" << std::endl;
+//virtual trigger
+void Animal::makeSound() const
+{
+	std::cout << "Animal makeSound" << std::endl;
 }
 
-std::string Animal::getType() const {
-    return this->_type;
+//getter
+std::string Animal::getType() const
+{
+	return (_type);
 }

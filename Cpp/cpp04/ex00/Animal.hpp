@@ -14,10 +14,8 @@ class Animal
         Animal(std::string type);
         Animal(const Animal &src);
         Animal &operator=(const Animal &rhs);
-        // Çok Önemli: Kalıtım alınan temel sınıfların yıkıcıları DAİMA virtual olmalıdır!
         virtual ~Animal();
 
-        // BÜYÜ BURADA: virtual kelimesi sayesinde asıl objenin fonksiyonu çalışır!
         virtual void makeSound() const;
         std::string getType() const;
 };
